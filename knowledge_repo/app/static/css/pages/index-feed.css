@@ -17,7 +17,7 @@
 }
 .feed-post:hover {
     background: #fff;
-    border: 1px solid #00a699;
+    border: 1px solid #F3AC2E;
     transition: background 0.4s, border 0.4s;
 }
 .feed-post:active {
@@ -79,7 +79,7 @@
 .feed-post .feed-tldr {
     height: 5em;
     padding: 10px;
-    background: rgba(0,0,0,0.03);
+    background: #eeeeee;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     font-style: italic;
@@ -91,10 +91,10 @@
     display: block;
     text-align: center;
     font-size: small;
-    background: rgba(0,0,0,0.03);
+    background: #eeeeee;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    color: #00a699;
+    color: #1EA8DE;
     margin-bottom: 0.3em;
     }
 .feed-post .feed-tldr-expander:hover {
