@@ -10,7 +10,7 @@ import datetime
 # not provided, it is assumed in these contexts to be
 # 'localhost:7000'. Be sure to specify this before deploying
 # into production.
-SERVER_NAME = 'knowledge.c3iot.com'
+SERVER_NAME = None # PRODUCTION 'knowledge.c3iot.com'
 
 # The knowledge repository uses the secret key to sign user
 # sessions. If not specified, a unique secret key will be
@@ -58,8 +58,8 @@ AUTH_PROVIDERS = ['github']
 # and private tokens. This can be done by instantiating instances of
 # `OAuth2Provider` and adding them to the above list, or by specifying OAuth
 # connection properties as demonstrated below for the GitHub authenticator.
-OAUTH_GITHUB_CLIENT_ID = '839533a2dd7f175bd54e'
-OAUTH_GITHUB_CLIENT_SECRET = 'fc3e94ffa49ec92d324c4d33ab8b94dcf0268b5b'
+OAUTH_GITHUB_CLIENT_ID = 'aa34838067f809f089cf' # PRODUCTION '839533a2dd7f175bd54e'
+OAUTH_GITHUB_CLIENT_SECRET = '49770a27a2dadb7994d3d8c5f14c73e0fbc7d8e4' # PRODUCTION 'fc3e94ffa49ec92d324c4d33ab8b94dcf0268b5b'
 
 # You can also forgo a fully-fledged sign in process for users
 # by hosting the knowledge repository behind a proxy server that
