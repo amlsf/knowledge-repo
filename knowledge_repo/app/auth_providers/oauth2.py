@@ -137,8 +137,14 @@ class OAuth2Provider(KnowledgeAuthProvider):
             if isinstance(key, (list, tuple)):
                 if len(key) == 1:
                     key = key[0]
-                else:
+                elif isinstance(d[key[0]], dict):
                     return extract_from_dict(d[key[0]], key[1:])
+                else:
+                    for item in key:
+                        result = d.get(item)
+                        if result:
+                            return result
+
             if isinstance(key, str):
                 return d[key]
             raise RuntimeError("Invalid key type: {}.".format(key))
@@ -155,7 +161,6 @@ class OAuth2Provider(KnowledgeAuthProvider):
             if 'avatar_uri' in self.user_info_mapping:
                 user.avatar_uri = extract_from_dict(response_dict, self.user_info_mapping['avatar_uri'])
         except Exception as exc:
-            print exc
             raise RuntimeError("Failure to extract user information from:\n\n {}".format(response.content))
 
         return user
