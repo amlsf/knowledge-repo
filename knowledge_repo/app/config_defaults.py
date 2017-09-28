@@ -10,7 +10,7 @@ import datetime
 # not provided, it is assumed in these contexts to be
 # 'localhost:7000'. Be sure to specify this before deploying
 # into production.
-SERVER_NAME = 'knowledge.c3iot.com' # full url or host port?
+SERVER_NAME = 'knowledge.c3iot.com' # full url or host port? TODO look at config file argument, pass in different
 
 # The knowledge repository uses the secret key to sign user
 # sessions. If not specified, a unique secret key will be

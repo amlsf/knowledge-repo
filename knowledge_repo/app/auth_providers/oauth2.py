@@ -154,7 +154,8 @@ class OAuth2Provider(KnowledgeAuthProvider):
                 user.name = extract_from_dict(response_dict, self.user_info_mapping['name'])
             if 'avatar_uri' in self.user_info_mapping:
                 user.avatar_uri = extract_from_dict(response_dict, self.user_info_mapping['avatar_uri'])
-        except Exception:
+        except Exception as exc:
+            print exc
             raise RuntimeError("Failure to extract user information from:\n\n {}".format(response.content))
 
         return user
