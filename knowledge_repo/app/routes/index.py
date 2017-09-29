@@ -83,7 +83,9 @@ def render_favorites():
 def render_feed():
     """ Renders the index-feed view """
     feed_params = from_request_get_feed_params(request)
-    posts, post_stats = get_posts(feed_params)
+    folder = request.args.get('folder', 'all')
+
+    posts, post_stats = get_posts(feed_params, folder)
     for post in posts:
         post.tldr = render_post_tldr(post)
 

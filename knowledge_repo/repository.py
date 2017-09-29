@@ -245,6 +245,14 @@ class KnowledgeRepository(with_metaclass(SubclassRegisteringABCMeta, object)):
         path = path or kp.path
         if not path:
             raise ValueError("Post path not provided for Knowledge Post, and one is not specified within the knowledge post. Either add the path to post headers using `path: <path>` or specify the project path on the command line adding `-p <path>` to the current command.")
+        if not (path.startswith("datascience")
+                or path.startswith("machinelearning") \
+                or path.startswith("appengineering") \
+                or path.startswith("infrastructure")\
+                or path.startswith("documentation") \
+                or path.startswith("product") \
+                or path.startswith("others")):
+            raise ValueError("Post must start with 'datascience' or 'machinelearning' or 'appengineering' or 'infrastructure' or 'documentation' or 'product' or 'others'!")
         path = self._kp_path(path)
         path = self.config.path_parse(path)
 
