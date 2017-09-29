@@ -28,7 +28,7 @@ DEBUG = False
 # ---------------------------------------------------
 # Database configuration
 # ---------------------------------------------------
-SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
+SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/knowledge.db'
 SQLALCHEMY_ECHO = False
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
