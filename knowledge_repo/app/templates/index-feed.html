@@ -35,7 +35,51 @@
 {% endmacro %}
 
 {% block inner_content %}
-
+<br><br>
+<div class="row cluster-header">
+    <div class="col-md-12" style='background-color:white'>
+      <div class="col-md-2 group-by-header">
+        <h5> Group posts by:</h5>
+      </div>
+      <span class="col-md-9 group-by-options">
+        <div class="radio-inline radio-cluster">
+          <label>
+            <input type="radio" name="cluster-radio" id="postsAll">All
+          </label>
+        </div>
+        <div class="radio-inline radio-cluster">
+          <label>
+            <input type="radio" name="cluster-radio" id="postsApps">Applications
+          </label>
+        </div>
+        <div class="radio-inline radio-cluster">
+          <label>
+            <input type="radio" name="cluster-radio" id="postsdatascience">Data Science
+          </label>
+        </div>
+        <div class="radio-inline radio-cluster">
+          <label>
+            <input type="radio" name="cluster-radio" id="postsmachinelearning">Machine Learning
+          </label>
+        </div>
+        <div class="radio-inline radio-cluster">
+          <label>
+            <input type="radio" name="cluster-radio" id="postsPlat">Platform
+          </label>
+        </div>
+        <div class="radio-inline radio-cluster">
+          <label>
+            <input type="radio" name="cluster-radio" id="postsPS">Products &amp; Services
+          </label>
+        </div>
+        <div class="radio-inline radio-cluster">
+          <label>
+            <input type="radio" name="cluster-radio" id="postsOthers">Others
+          </label>
+        </div>
+      </span>
+    </div>
+  </div>
 <div id="feed-posts">
     {% for post in posts %}
     <div class="row feed-post" data-path='{{post.path|urlencode}}' data-url="{{url_for('posts.render', path=post.path)}}">
@@ -71,6 +115,7 @@
 <script src="{{ url_for('static', filename='js/pages/index-feed.js') }}"></script>
 <script src="{{ url_for('static', filename='js/helpers.js')}}" type='text/javascript'></script>
 <script src="{{ url_for('static', filename='js/tags.js')}}" type='text/javascript'></script>
+<script src="{{ url_for('static', filename='js/index-folder.js') }}"></script>
 <script type="text/javascript">
 
   $(".pop").popover({ trigger: "manual" , html: true, animation:false, delay: 100})
@@ -118,6 +163,16 @@
     $(document.body).on('click',"button[id^=tag-subscription]",function () {
       tagsJx.addTagSubscriptionListener($(this)[0]);
     });
+
+    var folderSelected = '#postsAll';
+    var folderButtons = ["postsAll", "postsApps", "postsdatascience", "postsmachinelearning", "postsPlat", "postsPS", "postsOthers"];
+    folderSelected = indexFolderJx.getFolderSelected(folderSelected);
+    $(folderSelected)[0].setAttribute("checked", "checked")
+    indexFolderJx.formatButtons(folderSelected, folderButtons);
+
+    function search(){
+      indexFolderJx.refreshPage(folderSelected);
+    }
   });
 </script>
 {% endblock %}
