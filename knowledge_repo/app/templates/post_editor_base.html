@@ -18,7 +18,8 @@
           <button class="btn btn-large btn-default btn-webeditor" id="btn_save">
             Submit for Review
           </button>
-          <button class="btn btn-large btn-webeditor {{'btn-primary' if status == 3 else 'btn-default'}}" id="btn_publish">
+          <button class="btn btn-large btn-webeditor {{'btn-primary' if status == 3 else 'btn-default'}}" 
+            style="border-color: #1EA8DE;" id="btn_publish">
             {% if status == 3 %}
             Unpublish
             {% else %}
