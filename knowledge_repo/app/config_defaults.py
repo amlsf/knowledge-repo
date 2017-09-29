@@ -202,7 +202,7 @@ INDEXING_ENABLED = True
 # a limited set of parent directories by setting
 # WEB_EDITOR_PREFIXES to a list of supported path prefixes.
 # e.g. ['webposts', 'projects']
-WEB_EDITOR_PREFIXES = ['webposts']
+WEB_EDITOR_PREFIXES = ['datascience', 'machinelearning', 'appengineering', 'infrastructure', 'documentation', 'product', 'others']
 
 
 # ---------------------------------------------------

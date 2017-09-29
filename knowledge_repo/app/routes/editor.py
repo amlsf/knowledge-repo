@@ -123,7 +123,6 @@ def save_post():
 
     data = request.get_json()
     path = data['path']
-
     prefixes = current_app.config['WEB_EDITOR_PREFIXES']
     if prefixes == []:
         raise Exception("Web editing is not configured")
@@ -144,7 +143,6 @@ def save_post():
 
     # create the knowledge post
     kp = kp or KnowledgePost(path=path)
-
     headers = {}
     headers['created_at'] = datetime.strptime(data['created_at'], '%Y-%m-%d').date()
     headers['updated_at'] = datetime.strptime(data['updated_at'], '%Y-%m-%d').date()
@@ -162,6 +160,8 @@ def save_post():
     kp.write(urlunquote(data['markdown']), headers=headers)
     # add to repo
     current_repo.add(kp, update=True, message=headers['title'])  # THIS IS DANGEROUS
+    current_repo.submit(path)
+    current_repo.git_checkout("master")
 
     update_index()
     return json.dumps({'path': path})

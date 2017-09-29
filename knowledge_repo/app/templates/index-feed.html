@@ -49,7 +49,7 @@
         </div>
         <div class="radio-inline radio-cluster">
           <label>
-            <input type="radio" name="cluster-radio" id="postsApps">Applications
+            <input type="radio" name="cluster-radio" id="postsappengineering">Applications
           </label>
         </div>
         <div class="radio-inline radio-cluster">
@@ -64,17 +64,17 @@
         </div>
         <div class="radio-inline radio-cluster">
           <label>
-            <input type="radio" name="cluster-radio" id="postsPlat">Platform
+            <input type="radio" name="cluster-radio" id="postsinfrastructure">Platform
           </label>
         </div>
         <div class="radio-inline radio-cluster">
           <label>
-            <input type="radio" name="cluster-radio" id="postsPS">Products &amp; Services
+            <input type="radio" name="cluster-radio" id="postsproduct">Products &amp; Services
           </label>
         </div>
         <div class="radio-inline radio-cluster">
           <label>
-            <input type="radio" name="cluster-radio" id="postsOthers">Others
+            <input type="radio" name="cluster-radio" id="postsothers">Others
           </label>
         </div>
       </span>
@@ -165,7 +165,7 @@
     });
 
     var folderSelected = '#postsAll';
-    var folderButtons = ["postsAll", "postsApps", "postsdatascience", "postsmachinelearning", "postsPlat", "postsPS", "postsOthers"];
+    var folderButtons = ["postsAll", "postsappengineering", "postsdatascience", "postsmachinelearning", "postsinfrastructure", "postsproduct", "postsothers"];
     folderSelected = indexFolderJx.getFolderSelected(folderSelected);
     $(folderSelected)[0].setAttribute("checked", "checked")
     indexFolderJx.formatButtons(folderSelected, folderButtons);
