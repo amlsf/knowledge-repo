@@ -23,7 +23,7 @@ def get_query_param_set(params):
     return param_set
 
 
-def get_posts(feed_params):
+def get_posts(feed_params, folder='all'):
     """
     Return a list of post objects (either WebEditorPosts or GitPosts)
     by building a query based on the feed_params
@@ -34,7 +34,10 @@ def get_posts(feed_params):
     """
 
     # make sure post is published
-    query = (db_session.query(Post).filter(Post.is_published))
+    if folder == 'all':
+        query = (db_session.query(Post).filter(Post.is_published))
+    else:
+        query = (db_session.query(Post).filter(Post.is_published and Post.path.startswith(folder)))
 
     # posts returned should not include any posts in the excluded tags
     excluded_tags = current_app.config.get('EXCLUDED_TAGS', [])
