@@ -101,7 +101,6 @@ tldr: This is short description of the content and findings of the post.
 
 Users add these notebooks/files to the knowledge repository through the `knowledge_repo` tool, as described below; which allows them to be rendered and curated in the knowledge repository's web app.
 
-If your favourite format is missing, we welcome contributions; and are happy to work with you to get it supported. See the "Contributing" section below to see how to add support for more formats.
 
 Note that the web application can live on top of multiple Knowledge Repo backends. Supported types so far are:
 
@@ -230,6 +229,16 @@ knowledge_repo --repo knowledge_data_repo add ~/Documents/my_first_knowledge_pos
 ```
 
 The `-p` flag specifies the location of the post in the knowledge data repository - in this case, `knowledge_data_repo/projects/test_knowledge`.
+
+Posts can be added to only the following folders inside the repo as of now
+* datascience 
+* machinelearning
+* appengineering
+* infrastructure
+* documentation
+* product
+* others
+
 The `-p` flag does not need to be specified if `path` is included in the header of the knowledge post.
 
 #### Updating knowledge
@@ -302,34 +311,6 @@ We currently have two ways to maintain tag integrity:
  - Browse the `/cluster?group_by=tags` endpoint to find and match existing tags.
  - After contributing, organize tags in batch with the `/batch_tags` end point.
 
-## Running the web app
-
-Running the web app allows you to locally view all the knowledge posts in the repository, or to serve it for others to view. It is also useful when developing on the web app.
-
-### Running the Web App on Multiple Repos
-
-The web application can be run on top of multiple knowledge repo backends. To do this, include each repo with a name and path, prefixed by --repo. For example:
-
-`knowledge_repo --repo {git}/path/to/git/repo --repo {webposts}sqlite:////tmp/dbrepo.db:mypostreftable runserver`
-
-If including a dbrepo, add the name of the dbrepo to the `WEB_EDITOR_PREFIXES` in the server config, and add it as config when running the app:
-
-`knowledge_repo --repo {git}/path/to/git/repo --repo {webposts}sqlite:////tmp/dbrepo.db:mypostreftable runserver --config resources/server_config.py`
-
-Note that this is required for the web application's internal post writing UI.
-
-## Contributing
-
-We would love to work with you to create the best knowledge repository software possible. If you have ideas or would like to have your own code included, add an issue or pull request and we will review it.
-
-### Adding new filetype support
-
-Support for conversion of a particular filetype to a knowledge post is added by writing a new `KnowledgePostConverter` object. Each converter should live in its own file in `knowledge_repo/converters`. Refer to the implementation for ipynb, Rmd, and md for more details. If your conversion is site-specific, you can define these subclasses in `.knowledge_repo_config`, whereupon they will be picked up by the conversion code.
-
-### Adding extra structure and/or verifications to the knowledge post conversion process
-
-When a KnowledgePost is constructed by converting from support filetypes, the resulting post is then passed through a series of postprocessors (defined in `knowledge_repo/postprocessors`). This allows one to modify the knowledge post, upload images to remote storage facilities (such as S3), and/or verify some additional structure of the knowledge posts. As above, defining or importing these classes in `.knowledge_repo_config.py` allows for postprocessors to be used locally.
-
 ### More
 
 Is the Knowledge Repository missing something else that you would like to see? Let us know, and we'll see if we cannot help you.
@@ -371,3 +352,12 @@ A knowledge post is a directory, with the following structure:
 		+ src/* [Optional; stores the original source files]
 
 Images are automatically extracted from the local paths on your computer, and placed into images. `src` contains the file(s) from which the knowledge post was converted from.
+
+## Contact details
+
+If you have trouble setting up the repo, want to contribute or have any other questions/comments/feedback, you can contact
+* Amy Lee
+* Quiwei Lee
+* Gautam Bhatt
+* Archana Manjunath
+* Yuan Liu
