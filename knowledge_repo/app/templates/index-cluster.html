@@ -90,7 +90,7 @@ $(document).ready(function() {
     var clusterButtons = ["clusterFolder", "clusterTags", "clusterAuthor"];
     var sortButtons = ["sortAlpha", "sortCount"];
     indexClusterJx.addFoldingToGroups();
-    indexClusterJx.clickTag(tag);
+    indexClusterJx.clickTag(tag); 
     clusterSelected = indexClusterJx.getClusterSelected(clusterSelected);
     sortSelected = indexClusterJx.getSortSelected(sortSelected);
     $(clusterSelected)[0].setAttribute("checked", "checked")
