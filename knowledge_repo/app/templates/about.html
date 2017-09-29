@@ -75,17 +75,10 @@ tldr: This is short description of the content and findings of the post.
             <pre><code>export $KNOWLEDGE_REPO=repo_path</code></pre>
             <h3><a id="Setup_of_the_knowledge_data_repositories_108"></a>Setup of the knowledge data repositories</h3>
             <p>There are two different ways to do this, depending on whether your organization already has a knowledge data repository or not:</p>
-            <h4><a id="Your_organization_already_has_a_knowledge_data_repository_setup_111"></a>Your organization already has a knowledge data repository setup</h4>
-            <p>If your organization already has a knowledge data repository setup, check it out onto your computer as you normally would; for example:</p>
-            <p><code>git clone git@example.com:example_data_repo.git</code></p>
+            <h4><a id="Your_organization_already_has_a_knowledge_data_repository_setup_111"></a>Checkout c3knowledge</h4>
+            <p>Checkout the c3knowledge repository from github:</p>       
+            <p><code>git clone https://github.com/c3-e/c3knowledge.git</code></p>
             <p>Running this same script if a repo already exists at <code>&lt;repo_path&gt;</code> will allow you to update it to be a knowledge data repository. This is useful if you are starting a repository on a remote service like GitHub, as this allows you to clone the remote repository as per normal; run this script; and then push the initialization back into the remote service using <code>git push</code>.</p>
-            <h4><a id="Your_organization_does_not_have_knowledge_data_repository_setup_118"></a>Your organization does not have knowledge data repository setup</h4>
-            <p>The following command will create a new repository at <code>&lt;repo_path&gt;</code></p>
-            <pre><code>knowledge_repo --repo &lt;repo_path&gt; init</code></pre>
-            <p>If you are hosting this repository on a remote service like Github, and you’ve created the knowledge data repository using the <code>init</code> flag, you must push that to that remote service in order for the later commands to work. On Git, this can be done by creating the remote repository through Git and then running</p>
-            <pre><code>git remote add origin url_of_the_repository_on_github
-            git push -u origin master</code></pre>
-            <p>For more details about the structure of a knowledge repository, see the technical details section below.</p>
             <h2><a id="Writing_Knowledge_Posts_133"></a>Writing Knowledge Posts</h2>
             <h3><a id="TLDR_Guide_For_Contributing_135"></a>TLDR Guide For Contributing</h3>
             <p>If you have already set up your system as described below, here is a snapshot of the commands you need to run to upload your knowledge post stored in ~/Documents/my_post.Rmd. For Jupyter / iPython Notebooks, the commands are the same, replacing all instances of <code>Rmd</code> with <code>ipynb</code>. It assumes you have configured the KNOWLEDGE_REPO environment variable to point to your local copy of the knowledge repository. The code is written for producing and contributing an ipynb file to make the examples clear, R Markdown files are run by using <code>Rmd</code> in place of <code>ipynb</code> in each command.</p>
@@ -118,6 +111,15 @@ tldr: This is short description of the content and findings of the post.
             we would run:</p>
             <pre><code>knowledge_repo --repo knowledge_data_repo add ~/Documents/my_first_knowledge_post.md -p projects/test_knowledge</code></pre>
             <p>The <code>-p</code> flag specifies the location of the post in the knowledge data repository - in this case, <code>knowledge_data_repo/projects/test_knowledge</code>.
+            <p>Posts can be added to only the following folders inside the repo as of now</p>
+            <ul>          
+            <li>appengineering</li>
+            <li>datascience</li>
+            <li>infrastructure</li>
+            <li>machinelearning</li>
+            <li>product</li>
+            <li>others</li>
+            </ul>
             The <code>-p</code> flag does not need to be specified if <code>path</code> is included in the header of the knowledge post.</p>
             <h4><a id="Updating_knowledge_185"></a>Updating knowledge</h4>
             <p>To update an existing knowledge post, pass the <code>--update</code> flag to the <code>add</code> command. This will allow the add operation to override exiting knowledge posts.</p>
@@ -220,32 +222,6 @@ tldr: This is short description of the content and findings of the post.
             <h3><a id="Handling_Images_223"></a>Handling Images</h3>
             <p>The knowledge repo’s default behavior is to add the markdown’s contents as is to your knowledge post git repository. If you do not have git LFS set up, it may be in your interest to have these images hosted on some type of cloud storage, so that pulling the repo locally isn’t cumbersome.</p>
             <p>To add support for pushing images to cloud storage, we provide a <a href="https://github.com/airbnb/knowledge-repo/blob/master/resources/extract_images_to_s3.py">postprocessor</a>. This file needs one line to be configured for your organization’s cloud storage. Once configured, the postprocessor’s registry key can be added to the knowledge git repository’s configuration file as a postprocessor.</p>
-            <h2><a id="Running_the_web_app_229"></a>Running the web app</h2>
-            <p>Running the web app allows you to locally view all the knowledge posts in the repository, or to serve it for others to view. It is also useful when developing on the web app.</p>
-            <h3><a id="Running_the_development_server_233"></a>Running the development server</h3>
-            <p>Running the web app in development/local/private mode is as simple as running:</p>
-            <p><code>knowledge_repo --repo &lt;repo_path&gt; runserver</code></p>
-            <p>Supported options are <code>--port</code> and <code>--dburi</code> which respectively change the local port on which the server is running, and the sqlalchemy uri where the database can be found and/or initiated. The default port is 7000, and the default dburi is <code>sqlite:////tmp/knowledge.db</code>. If the database does not exist, it is created (if that is possible) and initialised. Database migrations are automatic (unless disabled to prevent accidental data loss), but can be performed manually using:</p>
-            <p><code>knowledge_repo --repo &lt;repo_path&gt; db_upgrade --dburi &lt;db&gt;</code></p>
-            <h3><a id="Running_the_Web_App_on_Multiple_Repos_243"></a>Running the Web App on Multiple Repos</h3>
-            <p>The web application can be run on top of multiple knowledge repo backends. To do this, include each repo with a name and path, prefixed by --repo. For example:</p>
-            <p><code>knowledge_repo --repo {git}/path/to/git/repo --repo {webposts}sqlite:////tmp/dbrepo.db:mypostreftable runserver</code></p>
-            <p>If including a dbrepo, add the name of the dbrepo to the <code>WEB_EDITOR_PREFIXES</code> in the server config, and add it as config when running the app:</p>
-            <p><code>knowledge_repo --repo {git}/path/to/git/repo --repo {webposts}sqlite:////tmp/dbrepo.db:mypostreftable runserver --config resources/server_config.py</code></p>
-            <p>Note that this is required for the web application’s internal post writing UI.</p>
-            <h3><a id="Deploying_the_web_app_255"></a>Deploying the web app</h3>
-            <p>Deploying the web app is much like running the development server, except that the web app is deployed on top of gunicorn. It also allows for enabling server-side components such as sending emails to subscribed users.</p>
-            <p>Deploying is as simple as:
-            <code>knowledge_repo --repo &lt;repo_path&gt; deploy</code></p>
-            <p>or if using multiple repos:
-            <code>knowledge_repo --repo {git}/path/to/git/repo --repo {webposts}sqlite:////tmp/dbrepo.db:mypostreftable deploy --config resources/server_config.py</code></p>
-            <p>Supported options are <code>--port</code>, <code>--dburi</code>,<code>--workers</code>, <code>--timeout</code> and <code>--config</code>. The <code>--config</code> option allows you to specify a python config file from which to load the extended configuration. A template config file is provided in <code>resources/server_config.py</code>. The <code>--port</code> and <code>--dburi</code> options are as before, with the <code>--workers</code> and <code>--timeout</code> options specifying the number of threads to use when serving through gunicorn, and the timeout after which the threads are presumed to have died, and will be restarted.</p>
-            <h2><a id="Contributing_267"></a>Contributing</h2>
-            <p>We would love to work with you to create the best knowledge repository software possible. If you have ideas or would like to have your own code included, add an issue or pull request and we will review it.</p>
-            <h3><a id="Adding_new_filetype_support_271"></a>Adding new filetype support</h3>
-            <p>Support for conversion of a particular filetype to a knowledge post is added by writing a new <code>KnowledgePostConverter</code> object. Each converter should live in its own file in <code>knowledge_repo/converters</code>. Refer to the implementation for ipynb, Rmd, and md for more details. If your conversion is site-specific, you can define these subclasses in <code>.knowledge_repo_config</code>, whereupon they will be picked up by the conversion code.</p>
-            <h3><a id="Adding_extra_structure_andor_verifications_to_the_knowledge_post_conversion_process_275"></a>Adding extra structure and/or verifications to the knowledge post conversion process</h3>
-            <p>When a KnowledgePost is constructed by converting from support filetypes, the resulting post is then passed through a series of postprocessors (defined in <code>knowledge_repo/postprocessors</code>). This allows one to modify the knowledge post, upload images to remote storage facilities (such as S3), and/or verify some additional structure of the knowledge posts. As above, defining or importing these classes in <code>.knowledge_repo_config.py</code> allows for postprocessors to be used locally.</p>
             <h3><a id="More_279"></a>More</h3>
             <p>Is the Knowledge Repository missing something else that you would like to see? Let us know, and we’ll see if we cannot help you.</p>
             <h2><a id="Technical_Details_283"></a>Technical Details</h2>
@@ -273,7 +249,15 @@ tldr: This is short description of the content and findings of the post.
                 + images/* [Optional]
                 + orig_src/* [Optional; stores the original converted file]</code></pre>
             <p>Images are automatically extracted from the local paths on your computer, and placed into images. <code>orig_src</code> contains the file(s) from which the knowledge post was converted from.</p>
-
+            <h2><a id="Contact_details"></a>Contact details</h2>
+            <p>If you have trouble setting up the repo, want to contribute or have any other questions/comments/feedback, you can contact</p>
+            <ul>
+            <li>Amy Lee</li>
+            <li>Quiwei Lee</li>
+            <li>Gautam Bhatt</li>
+            <li>Archana Manjunath</li>
+            <li>Yuan Liu</li>
+            </ul>
           </div>
 
         </div>
