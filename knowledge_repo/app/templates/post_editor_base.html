@@ -16,17 +16,7 @@
 
         <div class="btn-group pull-right" style='margin-right: 15px'>
           <button class="btn btn-large btn-default btn-webeditor" id="btn_save">
-            Save as Draft
-          </button>
-          <button
-            class="btn btn-large {{'btn-primary' if (status == 1 or status == 2) else 'btn-default'}} btn-webeditor" id="btn_in_review"
-            data-toggle="modal"
-            data-target="#webpost-send-for-review-modal">
-            {% if status == 1 or status == 2 %}
-            In Review Phase
-            {% else %}
             Submit for Review
-            {% endif %}
           </button>
           <button class="btn btn-large btn-webeditor {{'btn-primary' if status == 3 else 'btn-default'}}" id="btn_publish">
             {% if status == 3 %}
@@ -479,8 +469,8 @@ $("#btn_save").on("click", function(){
         }
         else {
           $("#btn_save")[0].setAttribute("class", "btn btn-large");
-          alert("The post was successfully saved!")
-          window.location = '/edit/' + response_data['path']
+          alert("The post was successfully submitted for review! The admins may get a chance to look at it soon...Till then, get back to your tickets :)")
+          window.location = '/feed'
         }
       },
       error: function(response_data) {
