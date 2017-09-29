@@ -14,12 +14,10 @@
       <div class="col-md-12"  id="#header-panel">
         <h3> {{ path if path else 'New Knowledge Post' }}
 
-        <div class="btn-group pull-right" style='margin-right: 15px'>
-          <button class="btn btn-large btn-default btn-webeditor" id="btn_save">
-            Save as Draft
-          </button>
+        <div class="btn-group pull-right" style='margin-right: 15px;'>
           <button
-            class="btn btn-large {{'btn-primary' if (status == 1 or status == 2) else 'btn-default'}} btn-webeditor" id="btn_in_review"
+            class="btn btn-large {{'btn-primary' if (status == 1 or status == 2) else 'btn-default'}} btn-webeditor" 
+            style="color: #1EA8DE; border-color: #1EA8DE;" id="btn_in_review"
             data-toggle="modal"
             data-target="#webpost-send-for-review-modal">
             {% if status == 1 or status == 2 %}
@@ -28,7 +26,8 @@
             Submit for Review
             {% endif %}
           </button>
-          <button class="btn btn-large btn-webeditor {{'btn-primary' if status == 3 else 'btn-default'}}" id="btn_publish">
+          <button class="btn btn-large btn-webeditor {{'btn-primary' if status == 3 else 'btn-default'}}" 
+            style="border-color: #1EA8DE;" id="btn_publish">
             {% if status == 3 %}
             Unpublish
             {% else %}
