@@ -31,6 +31,7 @@ var markdownJx = (function(){
     }
     var postContent = {};
     postContent.content = markdownString;
+    console.log("ERROR_1");
     $.ajax({
         type: "POST",
         dataType: "json",
