@@ -1,6 +1,6 @@
 .navbar {
-    background-color: #565a5c;
-    border-color: #565a5c;
+    background-color: #094F6D;
+    border-color: #616262;
     color: #fff;
     box-shadow: 0px 1px 5px rgba(0,0,0,0.5);
     z-index: 10000;
@@ -66,9 +66,9 @@ color: #fff;
   font-style: italic;
 }
 .navbar a:hover {
-    background: #06c6b6;
+    background: #F3AC2E;
     opacity: 1;
-    border-color: #06c6b6;
+    border-color: #F3AC2E;
 }
 .page-container {
     margin-top: 70px;
@@ -145,12 +145,12 @@ color: #fff;
 }
 
 .tt-suggestion:hover {
- background-color: #f5f5f5 ;
+ background-color: #FAFAFA ;
  cursor:pointer;
 }
 
 .tt-suggestion.tt-cursor {
-  background-color: #f5f5f5;
+  background-color: #FAFAFA;
 }
 
 .tt-input, .tt-hint {
@@ -172,7 +172,7 @@ color: #fff;
     position: fixed;
     overflow-y: auto;
     max-height: calc(100% - 50px);
-    color: #aaa;
+    color: #333;
     padding-bottom: 2em;
     margin-top: -20px;
 }
@@ -189,6 +189,10 @@ color: #fff;
     font-variant: small-caps;
     margin-top: 1em;
     margin-bottom: 0.5em;
+}
+
+.navbar-brand {
+    padding: 5px;
 }
 
 .side-panel .section:first-of-type {
@@ -218,12 +222,12 @@ color: #fff;
 .side-panel a {
     display: block;
     padding: 3px;
-    color: #aaa;
+    color: #333;
     border-radius: 3px;
     transition: color 0.2s;
 }
 .side-panel a:hover {
-    color: #00a699;
+    color: #1EA8DE;
     transition: color 0.3s;
 }
 .side-panel a.highlight {
@@ -237,7 +241,7 @@ color: #fff;
 /* navbar elements*/
 .navbar-knowledge, .navbar-text, .glyphicon-navbar {
   color: #cacccd;
-  background-color: #565a5c;
+  background-color: #616262;
   border-radius: 0px;
 }
 
@@ -249,20 +253,20 @@ color: #fff;
 
 .footer {
     text-align: center;
-    color: #565a5c;
+    color: #616262;
     padding: 20px;
 }
 
 .panel {
   border: 1px solid #dce0e0;
-  color: #565a5c;
+  color: #616262;
   background-color: white;
   border-radius: 0;
   margin-bottom: 0px;
 }
 
 .panel-header {
-    color: #565a5c;
+    color: #616262;
     font-size: 16px;
     padding-top: 14px;
     padding-bottom: 14px;
@@ -294,11 +298,11 @@ body {
   background-color: whitesmoke;
   font-size: 14px;
   font-family: 'Lato', sans-serif;
-  /*background-color: #F8F8F8;*/
+  /*background-color: white;*/
 }
 
 a {
-  color: #00a699;
+  color: #1EA8DE;
   text-decoration: none;
 }
 
@@ -349,15 +353,15 @@ img {
   font-size: 14px;
   border: 1px solid;
   border-radius: 15px;
-  border-color: #9CA299;
+  border-color: #F4902D;
   font-weight: normal;
   display: inline-block;
   margin-bottom: 4px;
 }
 
 a.label:focus, a.label:hover {
-    color: #00A699;
-    border-color: #00A699;
+    color: #1EA8DE;
+    border-color: #1EA8DE;
     background-color: #fff;
     opacity: 1;
 }
@@ -373,40 +377,40 @@ a.label:focus, a.label:hover {
 }
 
 .label-tag[href]:hover {
-  color: #00A699;
-  border-color: #00A699;
+  color: #1EA8DE;
+  border-color: #1EA8DE;
   background-color: #fff;
   opacity: 1;
 }
 
 .label-subscribed {
   color: white;
-  background-color: #00A699;
+  background-color: #FFCC58;
   opacity: 0.7;
 }
 
 .label-unsubscribed {
-  color: #9CA299;
+  color: #F4902D;
   background-color: inherit;
 }
 
 .btn-primary {
   color: #fff;
-  background-color: #00A699;
-  border: 1px solid #00A699;
+  background-color: #1EA8DE;
+  border: 1px solid #1EA8DE;
 }
 
 .btn.btn-default.btn-subscribe,
 .btn.btn-default.btn-subscribe:hover {
   background-color: #fff;
-  border: 1px solid #00A699;
-  color: #00A699;
+  border: 1px solid #1EA8DE;
+  color: #1EA8DE;
 }
 
 .btn-unsubscribe,
 .btn-unsubscribe:hover {
-  background-color: #00A699;
-  border: 1px solid #00A699;
+  background-color: #1EA8DE;
+  border: 1px solid #1EA8DE;
   color: #fff;
 }
 
@@ -432,8 +436,8 @@ a.label:focus, a.label:hover {
   color:  #9CA299;
 }
 
-.glyphicon-filled, .glyphicon-clickable {
-  color: #9CA299;
+.glyphicon-filled, .glyphicon-clickable{
+  color: #F4902D;
 }
 
 .content-offset {
@@ -492,7 +496,7 @@ a.label:focus, a.label:hover {
 }
 
 .content {
-  border-left: 1px solid #F8F8F8;
+  border-left: 1px solid white;
   background-color: white;
   line-height: 1.6em;
   color: #555;
@@ -581,11 +585,11 @@ span.index-view-name {
 
 .btn-active, .btn-active > span {
   color: white;
-  background-color: #00a699;
+  background-color: #1EA8DE;
 }
 
 .btn-active:hover {
-  background-color: #00a699;
+  background-color: #1EA8DE;
   opacity: 0.8;
 }
 
@@ -613,11 +617,11 @@ margin: 0px;
   display: block;
 }
 .pagination li a {
-  color: #00a699;
+  color: #1EA8DE;
 }
 .pagination .active a {
-background-color: #00a699;
-border-color: #00a699;
+background-color: #1EA8DE;
+border-color: #1EA8DE;
 }
 .pagination .active a:hover {
 background-color: #11b6a2;
@@ -649,7 +653,7 @@ border-color: #11b6aa;
 
 .group-by-header > h5,
 .sort-by-header > h5 {
-  color: #9CA299;
+  color: #333;
   font-weight: 700;
 }
 
@@ -663,7 +667,7 @@ border-color: #11b6aa;
 .radio-cluster {
   font-weight: 100;
   padding-top: 10px;
-  color: #9ca299;
+  color: #F4902D;
 }
 
 .radio-cluster > label {
@@ -676,12 +680,12 @@ border-color: #11b6aa;
   height:15px;
   border-radius:50%;
   outline:none;
-  box-shadow:0 0 5px 0px #9CA299 inset;
+  box-shadow:0 0 5px 0px #F3AC2E inset;
 }
 
 .radio-cluster > label > input[type='radio']:hover {
   border-radius:50%;
-  box-shadow:0 0 5px 0px #9CA299 inset;
+  box-shadow:0 0 5px 0px #F3AC2E inset;
 }
 
 .radio-cluster > label > input[type='radio']:before{
@@ -694,7 +698,11 @@ border-color: #11b6aa;
 }
 
 .radio-cluster > label > input[type='radio']:checked:before {
-  background:#9CA299;
+  background:#F3AC2E;
+}
+
+.radio-cluster > label > input[type='radio']:checked:after {
+  background:#F3AC2E;
 }
 
 #cluster_list {
@@ -737,14 +745,14 @@ border-color: #11b6aa;
 #btn_publish:hover,
 #btn_publish.btn-primary,
 .btn-email-reviewers{
-  background-color: #00a699;
-  border: 1px solid #00a699;
+  background-color: #1EA8DE;
+  border: 1px solid #1EA8DE;
   color: #fff;
 }
 
 .create-btn-group > a {
-  background-color: #00A699;
-  border: 1px solid #00A699;
+  background-color: #1EA8DE;
+  border: 1px solid #1EA8DE;
 }
 
 .btn[data-target*='#show_posts_']:active,
